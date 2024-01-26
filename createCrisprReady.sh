@@ -54,5 +54,16 @@ for file in "exomesCohort"/*; do
     # Remove duplicate sequences/ids and '--' lines, then write to final output file
     awk '!seen[$0]++ && $0 != "--"' "$temp_output" > "$output"
     rm "$temp_output" # Remove the temporary file
+    
+    # Sort the fasta file by sequence id
+    # Assume the format of the id is ">gene###"
+    temp_output="${output}.tmp"
+    awk 'BEGIN{RS=">"} NR>1 {gsub("\n", "\t"); print ">"$0}' "$output" | \
+    sort -n -k1.6 | \
+    awk '{sub("\t", "\n"); gsub("\t", ""); print $0}' > "$temp_output"
+
+    # Replace output with temp file
+    mv "$temp_output" "$output"
+
     echo -e "> Top motifs created\n--------------------\n"
 done
