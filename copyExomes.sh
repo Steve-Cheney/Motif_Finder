@@ -40,4 +40,4 @@ for file in $cohort_names; do
     fi
 done
 
-echo "Exhomes Cohort created"
+echo "Exomes Cohort created"
