@@ -9,9 +9,9 @@ fi
 # Assign command line arguments to variables
 motifs_file="$1"
 
-
+mkdir -p "exomesCohort/topMotifs"
 # Loop over each file in the cohort subdirectory
-for file in "exomesCohort"/*; do
+for file in exomesCohort/*.fasta exomesCohort/*.fa; do
     echo -n "Finding motifs "
 
     # Use grep to search for each line in the target file and motif counts
@@ -26,7 +26,11 @@ for file in "exomesCohort"/*; do
         counter=$((counter + 1))
     done < "$motifs_file"
     
-    file_name=$(basename "$file" ".fasta")
+    if [[ "$file" == *.fasta ]]; then
+        file_name=$(basename "$file" ".fasta")
+    elif [[ "$file" == *.fa ]]; then
+        file_name=$(basename "$file" ".fa")
+    fi
 
     # Convert the array to key value pairs and sort them in descending order, then get the keys for grep
     top_three_keys=($(for key in "${!motif_dict[@]}"; do
@@ -40,7 +44,7 @@ for file in "exomesCohort"/*; do
     done
     
     # Create an empty output file
-    output="exomesCohort/${file_name}_topmotifs.fasta"
+    output="exomesCohort/topMotifs/${file_name}_topmotifs.fasta"
     > "$output"
     # Temp file to hold intermediate results
     temp_output="${output}.temp"
