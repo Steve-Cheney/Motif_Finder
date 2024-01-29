@@ -14,7 +14,7 @@ The script performs the following functions:
 ## Usage
 
 ```bash
-python exomeReport.py <clinical_data_file> <motif_list> <exome_directory>
+python3 exomeReport.py <clinical_data_file> <motif_list> <exome_directory>
 ```
 
 ### Arguments

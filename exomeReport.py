@@ -102,10 +102,10 @@ Arguments:
     
     # Execute the bash scripts
     
-    subprocess.call(['sh', './copyExomes.sh', clinical_data_file, exome_directory])
-    subprocess.call(['sh', './createCrisprReady.sh', motif_list, exome_directory])
-    subprocess.call(['sh', './identifyCrisprSite.sh', exome_directory])
-    subprocess.call(['sh', './editGenome.sh', exome_directory])
+    subprocess.call(['bash', './copyExomes.sh', clinical_data_file, exome_directory])
+    subprocess.call(['bash', './createCrisprReady.sh', motif_list, exome_directory])
+    subprocess.call(['bash', './identifyCrisprSite.sh', exome_directory])
+    subprocess.call(['bash', './editGenome.sh', exome_directory])
     
     print("---\nSubprocesses complete!\n---")
     
