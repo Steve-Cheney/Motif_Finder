@@ -2,12 +2,12 @@
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <data_file> <exome_directory>"
+    echo "Usage: $0 <clinical_data_file> <exome_directory>"
     exit 1
 fi
 
 # Assign command line arguments to variables
-data_file="$1"
+clinical_data_file="$1"
 exome_directory="$2"
 
 cohort_names=""
@@ -22,7 +22,7 @@ while IFS= read -r line; do
     if [ "$diam" -ge 20 ] && [ "$diam" -le 30 ]; then
         cohort_names+=$(echo "$line" | cut -f6)$'.fasta\n'
     fi
-done < <(tail -n +2 "$data_file") # Skip headers
+done < <(tail -n +2 "$clinical_data_file") # Skip headers
 
 # Remove exta newline
 cohort_names=${cohort_names%$'\n'}
@@ -30,11 +30,11 @@ cohort_names=${cohort_names%$'\n'}
 echo "Cohort identified"
 
 # Copy files over to new directory
-mkdir -p "exomesCohort"
+mkdir -p "$exome_directory/exomesCohort"
 
 for file in $cohort_names; do
     if [ -f "$exome_directory/$file" ]; then
-        cp "$exome_directory/$file" "exomesCohort/"
+        cp "$exome_directory/$file" "$exome_directory/exomesCohort/"
     else
         echo "File <'$file'> not found."
     fi
