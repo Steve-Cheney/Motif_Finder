@@ -63,5 +63,5 @@ chmod +x copyExomes.sh createCrisprReady.sh editGenome.sh identifyCrisprSite.sh
 Use `-h` or `-help` for usage information.
 
 ```
-python genomeReport.py -h
+python exomeReport.py -h
 ```
