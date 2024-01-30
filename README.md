@@ -22,7 +22,7 @@ python3 exomeReport.py <clinical_data_file> <motif_list> <exome_directory>
 ### Arguments
 
 - `<clinical_data_file>`: Path to the file containing clinical data.
-    - Format: `Discoverer   Location    Diameter (mm)   Environment tStatus code_name`
+    - Format: `Discoverer   Location    Diameter (mm)   Environment Status code_name`
     - Note: Each value should be separated by a tab.
     
 - `<motif_list>`: Path to the file containing the motifs of interest.
