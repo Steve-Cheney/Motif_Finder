@@ -49,7 +49,7 @@ python3 exomeReport.py <clinical_data_file> <motif_list> <exome_directory>
 - Generates the following folder structure:
 
 ```
-<exomes>
+<exome_directory>
     ├── exomesCohort
     │   ├── postcrispr
     |   |   ├── <exome>_postcrispr.fasta
