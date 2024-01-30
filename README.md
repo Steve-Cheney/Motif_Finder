@@ -17,6 +17,8 @@ The script performs the following functions:
 python3 exomeReport.py <clinical_data_file> <motif_list> <exome_directory>
 ```
 
+- If you have syntax errors while running the script, please see the help section below. It is required to use `python3` to run this script.
+
 ### Arguments
 
 - `<clinical_data_file>`: Path to the file containing clinical data.
@@ -44,6 +46,23 @@ python3 exomeReport.py <clinical_data_file> <motif_list> <exome_directory>
 
 ### Output
 
+- Generates the following folder structure:
+
+```
+<exomes>
+    ├── exomesCohort
+    │   ├── postcrispr
+    |   |   ├── <exome>_postcrispr.fasta
+    |   |   └── ...    
+    │   ├── precrispr
+    |   |   ├── <exome>_precrispr.fasta
+    |   |   └── ...    
+    │   ├── topMotifs
+    |   |   ├── <exome>_topmotifs.fasta
+    |   |   └── ...    
+    │   └── summary.txt - A summary of the sequenced CRISPR candidates
+```
+
 - Generates a summary file at `<exome_directory>/exomesCohort/summary.txt`.
 - The summary file includes details about the organism, the discoverer, diameter, environment, and the first sequences from the associated `.fasta` file.
 
@@ -65,3 +84,5 @@ Use `-h` or `-help` for usage information.
 ```
 python exomeReport.py -h
 ```
+
+- Use `python3` to run the python script, and not `python` due to Python3 function formatting.
